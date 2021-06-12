@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,22 +21,35 @@ namespace WindowsFormsApp1
         private void Form1_Load(object sender, EventArgs e)
         {
             menuStrip1.Visible = false;
+            panel2.Visible = false;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            String Username = textBox1.Text;
-            String Password = textBox2.Text;
+            SqlConnection con = new SqlConnection("data source = MANSIJ\\SQLEXPRESS; database=college; integrated security=True");
 
-            if(Username == "eec" && Password == "eec")
+            con.Open();
+
+            string sql = "select * from admin where username = '" + textBox1.Text + "' and password= '" + textBox2.Text + "'";
+
+            SqlDataAdapter adapter = new SqlDataAdapter(sql, con);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+
+            if (dt.Rows.Count >= 1)
             {
                 menuStrip1.Visible = true;
                 panel1.Visible = false;
             }
             else
             {
-                MessageBox.Show("Invalid Username or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Incorrect Username or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBox1.Clear();
+                textBox2.Clear();
+
             }
+
+            con.Close();
         }
 
         private void newStudentToolStripMenuItem_Click(object sender, EventArgs e)
@@ -84,6 +98,60 @@ namespace WindowsFormsApp1
         {
             RemoveTeacher rt = new RemoveTeacher();
             rt.Show();
+        }
+
+        private void feeFilterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Salary sy = new Salary();
+            sy.Show();
+        }
+
+        private void salaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SalaryDetails sad = new SalaryDetails();
+            sad.Show();
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+            panel2.Visible = true;
+        }
+
+        private void btnExitRegister_Click(object sender, EventArgs e)
+        {
+            panel2.Visible = false;
+            panel1.Visible = true;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (txtBoxUsername.Text.Trim() != "" && txtBoxPass.Text.Trim() != "" && txtBoxLiscence.Text.Trim() == "admin")
+            {
+                SqlConnection con = new SqlConnection("data source = MANSIJ\\SQLEXPRESS; database=college; integrated security=True");
+
+                con.Open();
+
+                string sql = "Insert into admin(username,password) values ('" + txtBoxUsername.Text + "','" + txtBoxPass.Text + "')";
+
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, con);
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+
+                con.Close();
+
+                MessageBox.Show("Register Successful");
+
+                panel1.Visible = true;
+                panel2.Visible = false;
+
+
+            }
+            else
+            {
+                MessageBox.Show("Please Check All The Information and Submit ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

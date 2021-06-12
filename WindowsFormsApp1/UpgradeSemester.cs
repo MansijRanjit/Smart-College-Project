@@ -28,12 +28,19 @@ namespace WindowsFormsApp1
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
 
-                cmd.CommandText = "update NewStudent set semester = '" + comboBoxTo.Text + "' where semester = '" + comboBoxFrom.Text + "'";
+                cmd.CommandText = "update NewStudent set semester = '" + comboBoxTo.Text + "'from NewStudent n, StudentFees s where n.NSID=s.NSID and semester = '" + comboBoxFrom.Text + "'";
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
 
+                cmd.CommandText = "delete from StudentFees where sem ='" + comboBoxFrom.Text + "'";
+                SqlDataAdapter da2 = new SqlDataAdapter(cmd);
+                DataSet ds2 = new DataSet();
+                da2.Fill(ds2);
+
                 MessageBox.Show("Upgrade Successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
             }
             else
             {

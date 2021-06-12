@@ -77,7 +77,7 @@ namespace WindowsFormsApp1
                 SqlCommand cmd1 = new SqlCommand();
                 cmd1.Connection = con1;
 
-                cmd1.CommandText = "insert into StudentFees (NSID,fees) values (" + txtRegNumber.Text + "," + txtFees.Text + ")";
+                cmd1.CommandText = "insert into StudentFees (NSID,fees,sem) values (" + txtRegNumber.Text + "," + txtFees.Text + ",'"+semesterLabel.Text+"')";
 
                 SqlDataAdapter DA1 = new SqlDataAdapter(cmd1);
                 DataSet DS1 = new DataSet();

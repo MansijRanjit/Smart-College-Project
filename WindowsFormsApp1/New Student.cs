@@ -52,7 +52,7 @@ namespace WindowsFormsApp1
             DataSet DS = new DataSet();
             DA.Fill(DS);
             con.Close();
-            MessageBox.Show("Data Saved. Remember the Registration ID", "Data", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            MessageBox.Show("Data Saved. Remember the Registration ID", "Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 

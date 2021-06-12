@@ -78,6 +78,18 @@
     <Compile Include="RemoveTeacher.Designer.cs">
       <DependentUpon>RemoveTeacher.cs</DependentUpon>
     </Compile>
+    <Compile Include="Salary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Salary.Designer.cs">
+      <DependentUpon>Salary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalaryDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalaryDetails.Designer.cs">
+      <DependentUpon>SalaryDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Student Fees.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +137,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RemoveTeacher.resx">
       <DependentUpon>RemoveTeacher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Salary.resx">
+      <DependentUpon>Salary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalaryDetails.resx">
+      <DependentUpon>SalaryDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Student Fees.resx">
       <DependentUpon>Student Fees.cs</DependentUpon>

@@ -31,6 +31,7 @@ namespace WindowsFormsApp1
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnRegister = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -55,13 +56,26 @@ namespace WindowsFormsApp1
             this.exitSystemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnExitRegister = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.txtBoxLiscence = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtBoxPass = new System.Windows.Forms.TextBox();
+            this.txtBoxUsername = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnRegister);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.btnLogin);
             this.panel1.Controls.Add(this.textBox2);
@@ -70,8 +84,19 @@ namespace WindowsFormsApp1
             this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(478, 216);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(407, 268);
+            this.panel1.Size = new System.Drawing.Size(427, 286);
             this.panel1.TabIndex = 2;
+            // 
+            // btnRegister
+            // 
+            this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegister.Location = new System.Drawing.Point(275, 220);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(101, 32);
+            this.btnRegister.TabIndex = 6;
+            this.btnRegister.Text = "Register";
+            this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // pictureBox1
             // 
@@ -86,7 +111,7 @@ namespace WindowsFormsApp1
             // btnLogin
             // 
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(179, 223);
+            this.btnLogin.Location = new System.Drawing.Point(154, 220);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(100, 32);
             this.btnLogin.TabIndex = 4;
@@ -142,7 +167,7 @@ namespace WindowsFormsApp1
             this.exitSystemToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(885, 83);
+            this.menuStrip1.Size = new System.Drawing.Size(1025, 83);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -196,21 +221,23 @@ namespace WindowsFormsApp1
             // studentFeesToolStripMenuItem
             // 
             this.studentFeesToolStripMenuItem.Name = "studentFeesToolStripMenuItem";
-            this.studentFeesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.studentFeesToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.studentFeesToolStripMenuItem.Text = "Student Fees";
             this.studentFeesToolStripMenuItem.Click += new System.EventHandler(this.studentFeesToolStripMenuItem_Click);
             // 
             // feeFilterToolStripMenuItem
             // 
             this.feeFilterToolStripMenuItem.Name = "feeFilterToolStripMenuItem";
-            this.feeFilterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.feeFilterToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.feeFilterToolStripMenuItem.Text = "Salary";
+            this.feeFilterToolStripMenuItem.Click += new System.EventHandler(this.feeFilterToolStripMenuItem_Click);
             // 
             // salaryToolStripMenuItem
             // 
             this.salaryToolStripMenuItem.Name = "salaryToolStripMenuItem";
-            this.salaryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.salaryToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.salaryToolStripMenuItem.Text = "Salary Details";
+            this.salaryToolStripMenuItem.Click += new System.EventHandler(this.salaryToolStripMenuItem_Click);
             // 
             // viewDetailsToolStripMenuItem
             // 
@@ -293,13 +320,118 @@ namespace WindowsFormsApp1
             this.label1.TabIndex = 0;
             this.label1.Text = "SMART";
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.pictureBox2);
+            this.panel2.Controls.Add(this.btnExitRegister);
+            this.panel2.Controls.Add(this.btnSave);
+            this.panel2.Controls.Add(this.txtBoxLiscence);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.txtBoxPass);
+            this.panel2.Controls.Add(this.txtBoxUsername);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Location = new System.Drawing.Point(332, 190);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(370, 312);
+            this.panel2.TabIndex = 4;
+            // 
+            // btnExitRegister
+            // 
+            this.btnExitRegister.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExitRegister.BackgroundImage")));
+            this.btnExitRegister.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnExitRegister.Location = new System.Drawing.Point(324, 3);
+            this.btnExitRegister.Name = "btnExitRegister";
+            this.btnExitRegister.Size = new System.Drawing.Size(43, 40);
+            this.btnExitRegister.TabIndex = 11;
+            this.btnExitRegister.UseVisualStyleBackColor = true;
+            this.btnExitRegister.Click += new System.EventHandler(this.btnExitRegister_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(172, 262);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(76, 33);
+            this.btnSave.TabIndex = 10;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // txtBoxLiscence
+            // 
+            this.txtBoxLiscence.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxLiscence.Location = new System.Drawing.Point(172, 213);
+            this.txtBoxLiscence.Name = "txtBoxLiscence";
+            this.txtBoxLiscence.PasswordChar = '*';
+            this.txtBoxLiscence.Size = new System.Drawing.Size(161, 26);
+            this.txtBoxLiscence.TabIndex = 9;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(16, 215);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(150, 24);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Liscence Code";
+            // 
+            // txtBoxPass
+            // 
+            this.txtBoxPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxPass.Location = new System.Drawing.Point(172, 168);
+            this.txtBoxPass.Name = "txtBoxPass";
+            this.txtBoxPass.PasswordChar = '*';
+            this.txtBoxPass.Size = new System.Drawing.Size(161, 26);
+            this.txtBoxPass.TabIndex = 7;
+            // 
+            // txtBoxUsername
+            // 
+            this.txtBoxUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxUsername.Location = new System.Drawing.Point(172, 118);
+            this.txtBoxUsername.Name = "txtBoxUsername";
+            this.txtBoxUsername.Size = new System.Drawing.Size(161, 26);
+            this.txtBoxUsername.TabIndex = 6;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(38, 168);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(114, 25);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Password";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(38, 119);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(118, 25);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Username";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(124, 18);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(101, 82);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 12;
+            this.pictureBox2.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(885, 514);
+            this.ClientSize = new System.Drawing.Size(1025, 514);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -314,6 +446,9 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -345,6 +480,17 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem upgradeSemesterToolStripMenuItem;
+        private System.Windows.Forms.Button btnRegister;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.TextBox txtBoxLiscence;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtBoxPass;
+        private System.Windows.Forms.TextBox txtBoxUsername;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnExitRegister;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 

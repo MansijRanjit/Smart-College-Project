@@ -46,11 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FeesDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FeesDetails.Designer.cs">
+      <DependentUpon>FeesDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IndividualStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IndividualStudent.Designer.cs">
+      <DependentUpon>IndividualStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IndividualTeacher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IndividualTeacher.Designer.cs">
+      <DependentUpon>IndividualTeacher.cs</DependentUpon>
     </Compile>
     <Compile Include="New Student.cs">
       <SubType>Form</SubType>
@@ -114,8 +132,17 @@
     <Compile Include="UpgradeSemester.Designer.cs">
       <DependentUpon>UpgradeSemester.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FeesDetails.resx">
+      <DependentUpon>FeesDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IndividualStudent.resx">
+      <DependentUpon>IndividualStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IndividualTeacher.resx">
+      <DependentUpon>IndividualTeacher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="New Student.resx">
       <DependentUpon>New Student.cs</DependentUpon>

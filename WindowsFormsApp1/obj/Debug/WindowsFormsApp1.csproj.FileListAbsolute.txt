@@ -18,3 +18,6 @@ E:\4rth Semester\Smart College 1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Rem
 E:\4rth Semester\Smart College 1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.RemoveTeacher.resources
 E:\4rth Semester\Smart College 1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Salary.resources
 E:\4rth Semester\Smart College 1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.SalaryDetails.resources
+E:\4rth Semester\Smart College 1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FeesDetails.resources
+E:\4rth Semester\Smart College 1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.IndividualTeacher.resources
+E:\4rth Semester\Smart College 1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.IndividualStudent.resources

@@ -52,7 +52,7 @@ namespace WindowsFormsApp1
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if(txtTeacherID.Text != "" || txtYear.Text != "" || txtSalary.Text != "" )
+            if(txtTeacherID.Text.Trim() != "" && txtYear.Text.Trim() != "" && txtSalary.Text.Trim() != "" )
             {
                 SqlConnection con = new SqlConnection("data source = MANSIJ\\SQLEXPRESS; database = college; integrated security = True");
 
@@ -82,15 +82,31 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
-                    MessageBox.Show("Entered Year Salary Already Paid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    MessageBox.Show("Entered Year Salary Already Paid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                
             }
             else
             {
-                MessageBox.Show("Please Check All The Informations and Submit.", "Error",MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                MessageBox.Show("Please Check All The Informations and Submit.", "Error",MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             
+        }
+
+        private void txtTeacherID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtSalary_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

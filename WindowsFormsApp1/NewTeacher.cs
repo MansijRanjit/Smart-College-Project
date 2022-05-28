@@ -20,30 +20,65 @@ namespace WindowsFormsApp1
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            String gender = "";
-            bool isChecked = radioMale.Checked;
 
-            if (isChecked)
+            if (txtFName.Text.Trim() != ""  && txtMobile.Text.Trim() != "" && txtEmail.Text.Trim() != ""  && txtSubject.Text.Trim() != "" && txtExperience.Text.Trim() != "" && txtUniversity.Text.Trim() != "" && txtAddress.Text.Trim() != "")
             {
-                gender = radioMale.Text;
+                String gender = "";
+                bool isChecked = radioMale.Checked;
+
+                if (isChecked)
+                {
+                    gender = radioMale.Text;
+                }
+                else
+                {
+                    gender = radioFemale.Text;
+                }
+
+
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = "data source = MANSIJ\\SQLEXPRESS; database = college; integrated security =True";
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = "insert into teacher (fname,gender,dob,mobile,email,sub,experience,uni,adr) values ('" + txtFName.Text + "','" + gender + "','" + dateTimePickerDOB.Text + "'," + txtMobile.Text + ",'" + txtEmail.Text + "','" + txtSubject.Text + "','" + txtExperience.Text + "','" + txtUniversity.Text + "','" + txtAddress.Text + "')";
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+
+                if(MessageBox.Show("Data Saved. Remember the Teacher ID.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)==DialogResult.OK)
+                {
+                    txtFName.Clear();
+                    txtAddress.Clear();
+                    radioFemale.Checked = false;
+                    radioMale.Checked = false;
+                    txtMobile.Clear();
+                    txtEmail.Clear();
+                    txtSubject.Clear();
+                    txtExperience.Clear();
+                    txtUniversity.Clear();
+
+                    SqlConnection con2 = new SqlConnection();
+                    con2.ConnectionString = "data source = MANSIJ\\SQLEXPRESS; database = college; integrated security =True";
+                    SqlCommand cmd2 = new SqlCommand();
+                    cmd2.Connection = con2;
+
+                    cmd2.CommandText = "select max(tID) from teacher";
+
+                    SqlDataAdapter da2 = new SqlDataAdapter(cmd2);
+                    DataSet ds2 = new DataSet();
+                    da2.Fill(ds2);
+
+                    Int64 abc = Convert.ToInt64(ds2.Tables[0].Rows[0][0]);
+                    label12.Text = (abc + 1).ToString();
+
+                }
             }
             else
             {
-                gender = radioFemale.Text;
+                MessageBox.Show("Please Fill All The Information and Submit ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = "data source = MANSIJ\\SQLEXPRESS; database = college; integrated security =True";
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-
-            cmd.CommandText = "insert into teacher (fname,gender,dob,mobile,email,sub,experience,uni,adr) values ('" + txtFName.Text + "','" + gender + "','" + dateTimePickerDOB.Text + "'," + txtMobile.Text + ",'" + txtEmail.Text + "','" + txtSubject.Text + "','" + txtExperience.Text + "','" + txtUniversity.Text + "','" + txtAddress.Text + "')";
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-
-            MessageBox.Show("Data Saved. Remember the Teacher ID.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -75,6 +110,41 @@ namespace WindowsFormsApp1
 
             Int64 abc = Convert.ToInt64(ds.Tables[0].Rows[0][0]);
             label12.Text = (abc + 1).ToString();
+        }
+
+        private void txtMobile_Validating(object sender, CancelEventArgs e)
+        {
+            if (((txtMobile.TextLength == 10) || (txtMobile.TextLength == 7)) && (txtMobile.Text.Any(char.IsNumber)))
+            {
+                errorProviderMobile.SetError(txtMobile, "");
+
+            }
+            else
+            {
+                txtMobile.Focus();
+                errorProviderMobile.SetError(txtMobile, "Please Enter Valid Phone Number");
+            }
+        }
+
+        private void txtEmail_Validating(object sender, CancelEventArgs e)
+        {
+            if ((txtEmail.Text != string.Empty) && (txtEmail.Text.Contains("@")) && (txtEmail.Text.Contains(".")))
+            {
+                errorProviderEmail.SetError(txtEmail, "");
+            }
+            else
+            {
+                txtEmail.Focus();
+                errorProviderEmail.SetError(txtEmail, "Please enter valid Email");
+            }
+        }
+
+        private void txtFName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

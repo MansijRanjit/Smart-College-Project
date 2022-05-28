@@ -126,7 +126,7 @@ namespace WindowsFormsApp1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (txtBoxUsername.Text.Trim() != "" && txtBoxPass.Text.Trim() != "" && txtBoxLiscence.Text.Trim() == "admin")
+            if (txtBoxUsername.Text.Trim() != "" && txtBoxPass.Text.Trim() != "" && txtBoxLiscence.Text.Trim() == "admin" && txtBoxUsername.Text.Length >= 4 && txtBoxPass.Text.Length >= 4)
             {
                 SqlConnection con = new SqlConnection("data source = MANSIJ\\SQLEXPRESS; database=college; integrated security=True");
 
@@ -152,6 +152,43 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Please Check All The Information and Submit ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void feeDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FeesDetails fd = new FeesDetails();
+            fd.Show();
+        }
+
+        private void txtBoxUsername_Validating(object sender, CancelEventArgs e)
+        {
+            if ((txtBoxUsername.TextLength >= 4) )
+            {
+                errorProviderUsername.SetError(txtBoxUsername, "");
+
+            }
+            else
+            {
+                errorProviderUsername.SetError(txtBoxUsername, "Please Enter Username Greater than or equal to 4 characters");
+            }
+        }
+
+        private void txtBoxPass_Validating(object sender, CancelEventArgs e)
+        {
+            if ((txtBoxPass.TextLength >= 4))
+            {
+                errorProviderPassword.SetError(txtBoxPass, "");
+
+            }
+            else
+            {
+                errorProviderPassword.SetError(txtBoxPass, "Please Enter Stronger Password ");
+            }
+        }
+
+        private void exitSystemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -40,8 +40,8 @@ namespace WindowsFormsApp1
             this.txtFees = new System.Windows.Forms.TextBox();
             this.fnameLabel = new System.Windows.Forms.Label();
             this.gnameLabel = new System.Windows.Forms.Label();
-            this.semesterLabel = new System.Windows.Forms.Label();
             this.btnSubmit = new System.Windows.Forms.Button();
+            this.comboBoxSem = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +69,7 @@ namespace WindowsFormsApp1
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(84, 248);
+            this.label2.Location = new System.Drawing.Point(84, 302);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 19);
             this.label2.TabIndex = 2;
@@ -79,7 +79,7 @@ namespace WindowsFormsApp1
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(54, 302);
+            this.label3.Location = new System.Drawing.Point(54, 356);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(122, 19);
             this.label3.TabIndex = 3;
@@ -89,7 +89,7 @@ namespace WindowsFormsApp1
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(84, 355);
+            this.label4.Location = new System.Drawing.Point(90, 254);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 19);
             this.label4.TabIndex = 4;
@@ -113,6 +113,7 @@ namespace WindowsFormsApp1
             this.txtRegNumber.Size = new System.Drawing.Size(218, 26);
             this.txtRegNumber.TabIndex = 6;
             this.txtRegNumber.TextChanged += new System.EventHandler(this.txtRegNumber_TextChanged);
+            this.txtRegNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRegNumber_KeyPress);
             // 
             // txtFees
             // 
@@ -121,12 +122,13 @@ namespace WindowsFormsApp1
             this.txtFees.Name = "txtFees";
             this.txtFees.Size = new System.Drawing.Size(218, 26);
             this.txtFees.TabIndex = 7;
+            this.txtFees.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFees_KeyPress);
             // 
             // fnameLabel
             // 
             this.fnameLabel.AutoSize = true;
             this.fnameLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fnameLabel.Location = new System.Drawing.Point(188, 248);
+            this.fnameLabel.Location = new System.Drawing.Point(188, 302);
             this.fnameLabel.Name = "fnameLabel";
             this.fnameLabel.Size = new System.Drawing.Size(169, 19);
             this.fnameLabel.TabIndex = 8;
@@ -136,21 +138,11 @@ namespace WindowsFormsApp1
             // 
             this.gnameLabel.AutoSize = true;
             this.gnameLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gnameLabel.Location = new System.Drawing.Point(188, 302);
+            this.gnameLabel.Location = new System.Drawing.Point(188, 356);
             this.gnameLabel.Name = "gnameLabel";
             this.gnameLabel.Size = new System.Drawing.Size(169, 19);
             this.gnameLabel.TabIndex = 9;
             this.gnameLabel.Text = "____________________";
-            // 
-            // semesterLabel
-            // 
-            this.semesterLabel.AutoSize = true;
-            this.semesterLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.semesterLabel.Location = new System.Drawing.Point(188, 355);
-            this.semesterLabel.Name = "semesterLabel";
-            this.semesterLabel.Size = new System.Drawing.Size(169, 19);
-            this.semesterLabel.TabIndex = 10;
-            this.semesterLabel.Text = "____________________";
             // 
             // btnSubmit
             // 
@@ -163,14 +155,33 @@ namespace WindowsFormsApp1
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
+            // comboBoxSem
+            // 
+            this.comboBoxSem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxSem.FormattingEnabled = true;
+            this.comboBoxSem.Items.AddRange(new object[] {
+            "1st Sem",
+            "2nd Sem",
+            "3rd Sem",
+            "4rth Sem",
+            "5th Sem",
+            "6th Sem",
+            "7th Sem",
+            "8th Sem"});
+            this.comboBoxSem.Location = new System.Drawing.Point(192, 251);
+            this.comboBoxSem.Name = "comboBoxSem";
+            this.comboBoxSem.Size = new System.Drawing.Size(132, 28);
+            this.comboBoxSem.TabIndex = 12;
+            this.comboBoxSem.Text = "---SELECT---";
+            // 
             // Student_Fees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(493, 495);
+            this.Controls.Add(this.comboBoxSem);
             this.Controls.Add(this.btnSubmit);
-            this.Controls.Add(this.semesterLabel);
             this.Controls.Add(this.gnameLabel);
             this.Controls.Add(this.fnameLabel);
             this.Controls.Add(this.txtFees);
@@ -202,7 +213,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TextBox txtFees;
         private System.Windows.Forms.Label fnameLabel;
         private System.Windows.Forms.Label gnameLabel;
-        private System.Windows.Forms.Label semesterLabel;
         private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.ComboBox comboBoxSem;
     }
 }

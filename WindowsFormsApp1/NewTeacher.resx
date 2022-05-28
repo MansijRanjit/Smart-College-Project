@@ -180,4 +180,10 @@
         /3TGEssaeZD9rvZ9PLFsj36onvoXRf8D5wH3qLbRUuoAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="errorProviderMobile.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="errorProviderEmail.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>147, 17</value>
+  </metadata>
 </root>

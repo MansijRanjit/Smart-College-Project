@@ -32,14 +32,30 @@ namespace WindowsFormsApp1
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection("data source = MANSIJ\\SQLEXPRESS; database = college; integrated security = True");
+            if (textBoxTeacherID.Text.Trim() != "" && (textBoxTeacherID.Text.Any(char.IsNumber)))
+            {
+                SqlConnection con = new SqlConnection("data source = MANSIJ\\SQLEXPRESS; database = college; integrated security = True");
 
-            string query = "select  teacher.tID as TeacherID, teacher.fname as FullName, teacher.mobile as MobileNumber,teacher.dob as DateOfBirth, Salary.syear as SalaryYear, Salary.salary as Salary from teacher,Salary where  teacher.tID = Salary.tID and (Salary.tID= " + textBoxTeacherID.Text+") ";
-            SqlDataAdapter da = new SqlDataAdapter(query, con);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
+                string query = "select  teacher.tID as TeacherID, teacher.fname as FullName, teacher.mobile as MobileNumber,teacher.dob as DateOfBirth, Salary.syear as SalaryYear, Salary.salary as Salary from teacher,Salary where  teacher.tID = Salary.tID and (Salary.tID= " + textBoxTeacherID.Text + ") ";
+                SqlDataAdapter da = new SqlDataAdapter(query, con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
 
-            dataGridView1.DataSource = ds.Tables[0];
+                if (ds.Tables[0].Rows.Count != 0)
+                {
+                    dataGridView1.DataSource = ds.Tables[0];
+                }
+                else
+                {
+                    MessageBox.Show("Registration Number data not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+               
+            }
+
+            else
+            {
+                MessageBox.Show("Please Enter Valid Registration Number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

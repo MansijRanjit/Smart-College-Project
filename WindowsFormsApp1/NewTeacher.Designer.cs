@@ -29,6 +29,7 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewTeacher));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,7 +56,11 @@ namespace WindowsFormsApp1
             this.btnReset = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.errorProviderMobile = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderEmail = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderMobile)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmail)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -176,6 +181,7 @@ namespace WindowsFormsApp1
             this.txtFName.Name = "txtFName";
             this.txtFName.Size = new System.Drawing.Size(208, 26);
             this.txtFName.TabIndex = 11;
+            this.txtFName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFName_KeyPress);
             // 
             // txtMobile
             // 
@@ -184,6 +190,7 @@ namespace WindowsFormsApp1
             this.txtMobile.Name = "txtMobile";
             this.txtMobile.Size = new System.Drawing.Size(208, 26);
             this.txtMobile.TabIndex = 12;
+            this.txtMobile.Validating += new System.ComponentModel.CancelEventHandler(this.txtMobile_Validating);
             // 
             // txtEmail
             // 
@@ -192,6 +199,7 @@ namespace WindowsFormsApp1
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(208, 26);
             this.txtEmail.TabIndex = 13;
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
             // 
             // txtSubject
             // 
@@ -302,6 +310,14 @@ namespace WindowsFormsApp1
             this.label12.TabIndex = 24;
             this.label12.Text = "label12";
             // 
+            // errorProviderMobile
+            // 
+            this.errorProviderMobile.ContainerControl = this;
+            // 
+            // errorProviderEmail
+            // 
+            this.errorProviderEmail.ContainerControl = this;
+            // 
             // NewTeacher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -337,6 +353,8 @@ namespace WindowsFormsApp1
             this.Text = "NewTeacher";
             this.Load += new System.EventHandler(this.NewTeacher_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderMobile)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -369,5 +387,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ErrorProvider errorProviderMobile;
+        private System.Windows.Forms.ErrorProvider errorProviderEmail;
     }
 }

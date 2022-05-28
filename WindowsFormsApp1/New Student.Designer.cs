@@ -29,6 +29,7 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(New_Student));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -58,7 +59,11 @@ namespace WindowsFormsApp1
             this.btnReset = new System.Windows.Forms.Button();
             this.txtBatch = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.errorProviderMobile = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderEmail = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderMobile)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmail)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -198,6 +203,7 @@ namespace WindowsFormsApp1
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(184, 24);
             this.txtFullName.TabIndex = 13;
+            this.txtFullName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFullName_KeyPress);
             // 
             // txtGuardianName
             // 
@@ -206,6 +212,7 @@ namespace WindowsFormsApp1
             this.txtGuardianName.Name = "txtGuardianName";
             this.txtGuardianName.Size = new System.Drawing.Size(184, 24);
             this.txtGuardianName.TabIndex = 14;
+            this.txtGuardianName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGuardianName_KeyPress);
             // 
             // txtMobile
             // 
@@ -214,6 +221,7 @@ namespace WindowsFormsApp1
             this.txtMobile.Name = "txtMobile";
             this.txtMobile.Size = new System.Drawing.Size(184, 24);
             this.txtMobile.TabIndex = 15;
+            this.txtMobile.Validating += new System.ComponentModel.CancelEventHandler(this.txtMobile_Validating);
             // 
             // txtSchoolName
             // 
@@ -230,6 +238,7 @@ namespace WindowsFormsApp1
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(184, 24);
             this.txtEmail.TabIndex = 17;
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
             // 
             // radioButtonMale
             // 
@@ -282,6 +291,7 @@ namespace WindowsFormsApp1
             this.txtSemester.Size = new System.Drawing.Size(179, 26);
             this.txtSemester.TabIndex = 21;
             this.txtSemester.Text = "--SELECT--";
+            this.txtSemester.MouseEnter += new System.EventHandler(this.txtSemester_MouseEnter);
             // 
             // txtProgram
             // 
@@ -296,6 +306,7 @@ namespace WindowsFormsApp1
             this.txtProgram.Size = new System.Drawing.Size(179, 26);
             this.txtProgram.TabIndex = 22;
             this.txtProgram.Text = "--SELECT--";
+            this.txtProgram.MouseEnter += new System.EventHandler(this.txtProgram_MouseEnter);
             // 
             // txtAddress
             // 
@@ -345,6 +356,14 @@ namespace WindowsFormsApp1
             this.label13.TabIndex = 28;
             this.label13.Text = "label13";
             // 
+            // errorProviderMobile
+            // 
+            this.errorProviderMobile.ContainerControl = this;
+            // 
+            // errorProviderEmail
+            // 
+            this.errorProviderEmail.ContainerControl = this;
+            // 
             // New_Student
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -384,6 +403,8 @@ namespace WindowsFormsApp1
             this.Text = "New_Student";
             this.Load += new System.EventHandler(this.New_Student_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderMobile)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -419,5 +440,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.TextBox txtBatch;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ErrorProvider errorProviderMobile;
+        private System.Windows.Forms.ErrorProvider errorProviderEmail;
     }
 }

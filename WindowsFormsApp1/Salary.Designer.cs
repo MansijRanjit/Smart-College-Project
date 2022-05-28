@@ -132,6 +132,7 @@ namespace WindowsFormsApp1
             this.txtSalary.Name = "txtSalary";
             this.txtSalary.Size = new System.Drawing.Size(218, 26);
             this.txtSalary.TabIndex = 12;
+            this.txtSalary.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSalary_KeyPress);
             // 
             // txtTeacherID
             // 
@@ -141,6 +142,7 @@ namespace WindowsFormsApp1
             this.txtTeacherID.Size = new System.Drawing.Size(218, 26);
             this.txtTeacherID.TabIndex = 11;
             this.txtTeacherID.TextChanged += new System.EventHandler(this.txtTeacherID_TextChanged);
+            this.txtTeacherID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTeacherID_KeyPress);
             // 
             // txtYear
             // 

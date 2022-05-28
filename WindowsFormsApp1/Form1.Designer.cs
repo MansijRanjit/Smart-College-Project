@@ -29,6 +29,7 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRegister = new System.Windows.Forms.Button();
@@ -47,6 +48,7 @@ namespace WindowsFormsApp1
             this.studentFeesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.feeFilterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.feeDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.studentToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.teacherToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,6 +59,7 @@ namespace WindowsFormsApp1
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnExitRegister = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtBoxLiscence = new System.Windows.Forms.TextBox();
@@ -65,12 +68,15 @@ namespace WindowsFormsApp1
             this.txtBoxUsername = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.errorProviderUsername = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderPassword = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderUsername)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPassword)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -210,7 +216,8 @@ namespace WindowsFormsApp1
             this.accountToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.studentFeesToolStripMenuItem,
             this.feeFilterToolStripMenuItem,
-            this.salaryToolStripMenuItem});
+            this.salaryToolStripMenuItem,
+            this.feeDetailsToolStripMenuItem});
             this.accountToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("accountToolStripMenuItem.Image")));
             this.accountToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
@@ -238,6 +245,13 @@ namespace WindowsFormsApp1
             this.salaryToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.salaryToolStripMenuItem.Text = "Salary Details";
             this.salaryToolStripMenuItem.Click += new System.EventHandler(this.salaryToolStripMenuItem_Click);
+            // 
+            // feeDetailsToolStripMenuItem
+            // 
+            this.feeDetailsToolStripMenuItem.Name = "feeDetailsToolStripMenuItem";
+            this.feeDetailsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.feeDetailsToolStripMenuItem.Text = "Fees Details";
+            this.feeDetailsToolStripMenuItem.Click += new System.EventHandler(this.feeDetailsToolStripMenuItem_Click);
             // 
             // viewDetailsToolStripMenuItem
             // 
@@ -299,6 +313,7 @@ namespace WindowsFormsApp1
             this.exitSystemToolStripMenuItem.Size = new System.Drawing.Size(79, 79);
             this.exitSystemToolStripMenuItem.Text = "Exit System";
             this.exitSystemToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.exitSystemToolStripMenuItem.Click += new System.EventHandler(this.exitSystemToolStripMenuItem_Click);
             // 
             // label2
             // 
@@ -331,10 +346,20 @@ namespace WindowsFormsApp1
             this.panel2.Controls.Add(this.txtBoxUsername);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Location = new System.Drawing.Point(332, 190);
+            this.panel2.Location = new System.Drawing.Point(507, 156);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(370, 312);
             this.panel2.TabIndex = 4;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(124, 18);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(101, 82);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 12;
+            this.pictureBox2.TabStop = false;
             // 
             // btnExitRegister
             // 
@@ -385,6 +410,7 @@ namespace WindowsFormsApp1
             this.txtBoxPass.PasswordChar = '*';
             this.txtBoxPass.Size = new System.Drawing.Size(161, 26);
             this.txtBoxPass.TabIndex = 7;
+            this.txtBoxPass.Validating += new System.ComponentModel.CancelEventHandler(this.txtBoxPass_Validating);
             // 
             // txtBoxUsername
             // 
@@ -393,6 +419,7 @@ namespace WindowsFormsApp1
             this.txtBoxUsername.Name = "txtBoxUsername";
             this.txtBoxUsername.Size = new System.Drawing.Size(161, 26);
             this.txtBoxUsername.TabIndex = 6;
+            this.txtBoxUsername.Validating += new System.ComponentModel.CancelEventHandler(this.txtBoxUsername_Validating);
             // 
             // label5
             // 
@@ -414,15 +441,13 @@ namespace WindowsFormsApp1
             this.label6.TabIndex = 4;
             this.label6.Text = "Username";
             // 
-            // pictureBox2
+            // errorProviderUsername
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(124, 18);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(101, 82);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 12;
-            this.pictureBox2.TabStop = false;
+            this.errorProviderUsername.ContainerControl = this;
+            // 
+            // errorProviderPassword
+            // 
+            this.errorProviderPassword.ContainerControl = this;
             // 
             // Form1
             // 
@@ -449,6 +474,8 @@ namespace WindowsFormsApp1
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderUsername)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPassword)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -491,6 +518,9 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnExitRegister;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ToolStripMenuItem feeDetailsToolStripMenuItem;
+        private System.Windows.Forms.ErrorProvider errorProviderUsername;
+        private System.Windows.Forms.ErrorProvider errorProviderPassword;
     }
 }
 
